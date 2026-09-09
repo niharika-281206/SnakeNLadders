@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Snakes &amp; Ladders | Premium Board Game</title>
+  <meta name="description" content="A beautifully crafted Snakes and Ladders board game. Play locally or challenge the AI in this premium digital experience.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <!-- Animated Background -->
+  <div class="bg-effects" aria-hidden="true">
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+    <div class="bg-orb bg-orb-3"></div>
+    <div class="particles" id="particles"></div>
+  </div>
+
+  <div class="app-shell">
+
+    <!-- ====== TOP BAR ====== -->
+    <header class="topbar">
+      <a class="brand" href="#setup" aria-label="Snakes and Ladders setup">
+        <span class="brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <rect x="2" y="2" width="20" height="20" rx="5"/>
+            <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" stroke="none"/>
+            <circle cx="15.5" cy="8.5" r="1.5" fill="currentColor" stroke="none"/>
+            <circle cx="8.5" cy="15.5" r="1.5" fill="currentColor" stroke="none"/>
+            <circle cx="15.5" cy="15.5" r="1.5" fill="currentColor" stroke="none"/>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <strong>SNAKES <i>&amp;</i> LADDERS</strong>
+          <small>PREMIUM BOARD GAME</small>
+        </span>
+      </a>
+      <div class="top-actions">
+        <button class="icon-btn" id="soundButton" type="button" title="Toggle sound" aria-label="Mute sound">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+            <path class="sound-wave" d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+            <path class="sound-wave" d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+          </svg>
+        </button>
+        <button class="icon-btn" id="themeButton" type="button" title="Toggle theme" aria-label="Switch to dark theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+        <button class="icon-btn" id="settingsButton" type="button" title="Open settings" aria-label="Open settings">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- ====== MAIN CONTENT ====== -->
+    <main>
+
+      <!-- ====== SETUP SCREEN ====== -->
+      <section class="screen setup-screen" id="setupScreen" aria-labelledby="setupTitle">
+
+        <!-- Hero -->
+        <div class="hero">
+          <div class="hero-content">
+            <p class="eyebrow">READY TO ROLL?</p>
+            <h1 id="setupTitle">Set up your players.<br><em>Race to 100.</em></h1>
+            <p class="hero-desc">Climb smart. Dodge the snakes. Own the board.</p>
+          </div>
+          <div class="hero-dice-display" aria-hidden="true">
+            <div class="hero-dice-inner">
+              <span>5</span>
+              <b></b>
+              <i></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Setup Layout -->
+        <div class="setup-layout">
+
+          <!-- Setup Card -->
+          <section class="setup-card glass-card">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">01 / THE TABLE</p>
+                <h2>Choose your game</h2>
+              </div>
+              <span class="step-badge">1</span>
+            </div>
+
+            <!-- Mode Selection -->
+            <div class="mode-grid">
+              <button class="mode-card is-selected" type="button" data-mode="local">
+                <span class="mode-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                  </svg>
+                </span>
+                <strong>LOCAL<br>MULTIPLAYER</strong>
+                <small>Pass the device around.</small>
+                <span class="check-badge">✓</span>
+              </button>
+              <button class="mode-card" type="button" data-mode="ai">
+                <span class="mode-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="4" y="4" width="16" height="16" rx="2"/>
+                    <circle cx="9" cy="9" r="1" fill="currentColor" stroke="none"/>
+                    <circle cx="15" cy="9" r="1" fill="currentColor" stroke="none"/>
+                    <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                  </svg>
+                </span>
+                <strong>VS<br>AI</strong>
+                <small>Challenge the house.</small>
+                <span class="check-badge">✓</span>
+              </button>
+              <button class="mode-card" type="button" data-mode="tournament">
+                <span class="mode-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                  </svg>
+                </span>
+                <strong>TOURNAMENT</strong>
+                <small>Compete for the top spot.</small>
+                <span class="check-badge">✓</span>
+              </button>
+            </div>
+
+            <!-- Player Count -->
+            <div class="field-heading">
+              <span>HOW MANY PLAYERS?</span>
+              <small>Choose 2 to 6</small>
+            </div>
+            <div class="segmented" id="playerCount">
+              <button type="button" data-count="2">2</button>
+              <button type="button" data-count="3">3</button>
+              <button class="is-selected" type="button" data-count="4">4</button>
+              <button type="button" data-count="5">5</button>
+              <button type="button" data-count="6">6</button>
+            </div>
+
+            <!-- Player Config -->
+            <div class="field-heading players-heading">
+              <span>PLAYER LINEUP</span>
+              <small>Give everyone a color</small>
+            </div>
+            <div class="player-config" id="playerConfig"></div>
+
+            <!-- Actions -->
+            <div class="setup-actions">
+              <button class="button button-primary glow-button" id="startButton" type="button">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                START GAME
+                <span class="btn-arrow">→</span>
+              </button>
+              <button class="button button-ghost" id="randomButton" type="button">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/>
+                  <polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/>
+                  <line x1="4" y1="4" x2="9" y2="9"/>
+                </svg>
+                Random setup
+              </button>
+            </div>
+          </section>
+
+          <!-- Preview Card -->
+          <aside class="preview-card">
+            <div class="preview-content">
+              <p class="eyebrow">02 / THE BOARD</p>
+              <h2>Race to 100</h2>
+              <p>Climb ladders.<br>Avoid snakes.<br>Be first to the finish.</p>
+            </div>
+            <div class="preview-board" id="previewBoard"></div>
+            <div class="preview-footer">
+              <span><i class="legend-dot ladder"></i> LADDERS</span>
+              <span><i class="legend-dot snake"></i> SNAKES</span>
+            </div>
+          </aside>
+
+        </div>
+      </section>
+
+      <!-- ====== GAME SCREEN ====== -->
+      <section class="screen game-screen" id="gameScreen" hidden aria-labelledby="gameTitle">
+
+        <!-- Game Heading -->
+        <div class="game-heading">
+          <div>
+            <p class="eyebrow">LIVE MATCH</p>
+            <h1 id="gameTitle">The board is yours.</h1>
+            <p class="game-subtitle" id="turnHeadline">Player 1's turn. Roll the dice and make your move.</p>
+          </div>
+          <button class="exit-button" id="exitButton" type="button">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            EXIT GAME
+          </button>
+        </div>
+
+        <!-- Game Layout -->
+        <div class="game-layout">
+
+          <!-- Board -->
+          <div class="board-wrap">
+            <div class="board" id="board" role="grid" aria-label="Snakes and Ladders board">
+              <div class="cells" id="cells"></div>
+              <svg class="visual-layer" id="visualLayer" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true"></svg>
+              <div class="pieces-layer" id="piecesLayer"></div>
+            </div>
+            <div class="board-caption">
+              <span><i class="legend-dot ladder"></i> CLIMB HIGH</span>
+              <span><i class="legend-dot snake"></i> WATCH YOUR STEP</span>
+              <strong>EXACT 100 TO WIN</strong>
+            </div>
+          </div>
+
+          <!-- Sidebar -->
+          <aside class="game-sidebar">
+
+            <!-- Turn Card -->
+            <section class="turn-card glass-card" id="turnCard">
+              <div class="turn-top">
+                <span class="eyebrow">CURRENT TURN</span>
+                <span class="live-pill"><i></i> LIVE</span>
+              </div>
+              <div class="turn-player">
+                <span class="avatar" id="turnAvatar">1</span>
+                <div>
+                  <strong id="turnName">Player 1</strong>
+                  <small id="turnStatus">Ready to roll?</small>
+                </div>
+              </div>
+              <div class="position-line">
+                <span>POSITION</span>
+                <strong id="turnPosition">1 / 100</strong>
+              </div>
+
+              <!-- 3D Dice & Roll Button -->
+              <button class="roll-button" id="rollButton" type="button">
+                <div class="dice-viewport">
+                  <div class="dice-cube" id="diceCube">
+                    <!-- Face 1 -->
+                    <div class="dice-face face-1">
+                      <span class="dot p5"></span>
+                    </div>
+                    <!-- Face 2 -->
+                    <div class="dice-face face-2">
+                      <span class="dot p3"></span>
+                      <span class="dot p7"></span>
+                    </div>
+                    <!-- Face 3 -->
+                    <div class="dice-face face-3">
+                      <span class="dot p3"></span>
+                      <span class="dot p5"></span>
+                      <span class="dot p7"></span>
+                    </div>
+                    <!-- Face 4 -->
+                    <div class="dice-face face-4">
+                      <span class="dot p1"></span>
+                      <span class="dot p3"></span>
+                      <span class="dot p7"></span>
+                      <span class="dot p9"></span>
+                    </div>
+                    <!-- Face 5 -->
+                    <div class="dice-face face-5">
+                      <span class="dot p1"></span>
+                      <span class="dot p3"></span>
+                      <span class="dot p5"></span>
+                      <span class="dot p7"></span>
+                      <span class="dot p9"></span>
+                    </div>
+                    <!-- Face 6 -->
+                    <div class="dice-face face-6">
+                      <span class="dot p1"></span>
+                      <span class="dot p3"></span>
+                      <span class="dot p4"></span>
+                      <span class="dot p6"></span>
+                      <span class="dot p7"></span>
+                      <span class="dot p9"></span>
+                    </div>
+                  </div>
+                </div>
+                <span class="roll-text">
+                  <strong>ROLL DICE</strong>
+                  <small>Press spacebar</small>
+                </span>
+                <span class="btn-arrow">→</span>
+              </button>
+            </section>
+
+            <!-- Players List -->
+            <section class="players-section glass-card">
+              <div class="section-title">
+                <h2>Players</h2>
+                <span id="moveCount">0 moves</span>
+              </div>
+              <div class="players-list" id="playersList"></div>
+            </section>
+
+            <!-- Game Log -->
+            <section class="log-section glass-card">
+              <div class="section-title">
+                <h2>Game Log</h2>
+                <span class="live-dot">● LIVE</span>
+              </div>
+              <div class="game-log" id="gameLog" aria-live="polite"></div>
+            </section>
+
+          </aside>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ====== TOASTS ====== -->
+  <div class="toast-region" id="toastRegion" aria-live="polite"></div>
+
+  <!-- ====== SETTINGS MODAL ====== -->
+  <div class="modal-backdrop" id="settingsModal" hidden>
+    <section class="modal glass-card" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+      <div class="modal-heading">
+        <h2 id="settingsTitle">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          Settings
+        </h2>
+        <button class="close-button" id="closeSettingsButton" type="button" aria-label="Close settings">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <label class="setting-row">
+        <span>
+          <strong>Sound effects</strong>
+          <small>Dice, movement and celebrations</small>
+        </span>
+        <input id="soundSetting" type="checkbox" checked>
+      </label>
+      <label class="setting-row">
+        <span>
+          <strong>Motion effects</strong>
+          <small>Keep the board feeling alive</small>
+        </span>
+        <input id="motionSetting" type="checkbox" checked>
+      </label>
+    </section>
+  </div>
+
+  <!-- ====== EXIT MODAL ====== -->
+  <div class="modal-backdrop" id="exitModal" hidden>
+    <section class="modal confirm-modal glass-card" role="dialog" aria-modal="true" aria-labelledby="exitTitle">
+      <span class="confirm-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </span>
+      <h2 id="exitTitle">Exit game?</h2>
+      <p>Are you sure you want to leave the current game?<br><strong>Your progress will be lost.</strong></p>
+      <div class="modal-actions">
+        <button class="button button-ghost" id="cancelExitButton" type="button">Cancel</button>
+        <button class="button button-danger" id="confirmExitButton" type="button">Exit game</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- ====== WINNER MODAL ====== -->
+  <div class="modal-backdrop" id="winnerModal" hidden>
+    <section class="winner-modal" role="dialog" aria-modal="true" aria-labelledby="winnerTitle">
+      <div class="confetti-container" id="confettiContainer" aria-hidden="true"></div>
+      <div class="winner-glow" aria-hidden="true"></div>
+      <span class="winner-kicker">★ VICTORY ★</span>
+      <span class="winner-crown" aria-hidden="true">👑</span>
+      <span class="winner-avatar avatar" id="winnerAvatar">1</span>
+      <h2 id="winnerTitle">Player 1 wins!</h2>
+      <p class="winner-subtitle">Conquered the board!</p>
+      <div class="winner-stats" id="winnerStats">
+        <div class="stat-item">
+          <span class="stat-value" id="statMoves">0</span>
+          <span class="stat-label">MOVES</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value" id="statLadders">0</span>
+          <span class="stat-label">LADDERS</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value" id="statSnakes">0</span>
+          <span class="stat-label">SNAKES</span>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="button button-primary glow-button" id="playAgainButton" type="button">Play again →</button>
+        <button class="button button-ghost" id="winnerSetupButton" type="button">Exit to setup</button>
+      </div>
+    </section>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
